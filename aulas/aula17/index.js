@@ -20,6 +20,10 @@ app.get('/cadastro', (req, res) => {
     res.render('formulario');
 })
 
+app.post('/add', (req, res) => {
+    res.send("FORMULÁRIO RECEBIDO!");
+})
+
 app.listen(8081, () => {
     console.log("Servidor rodando");
 });
