@@ -8,7 +8,7 @@ const Sequelize = require('sequelize');
 
 
 //configuração do handlebars
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 //Conexão com o bando de dados MySQL
 const sequelize = new Sequelize('teste', 'root', 'root', {
@@ -16,6 +16,10 @@ const sequelize = new Sequelize('teste', 'root', 'root', {
     dialect: "mysql",
 });
 
+app.get('/cadastro', (req, res) => {
+    res.render('formulario');
+})
+
 app.listen(8081, () => {
     console.log("Servidor rodando");
-})
+});
