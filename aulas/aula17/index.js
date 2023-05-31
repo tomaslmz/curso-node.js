@@ -3,6 +3,8 @@ const app = express();
 
 const handlebars = require("express-handlebars");
 
+const bodyParser = require("body-parser");
+
 const Sequelize = require('sequelize');
 
 
@@ -10,6 +12,9 @@ const Sequelize = require('sequelize');
 //configuração do handlebars
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+//configuração do body parser
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 //Conexão com o bando de dados MySQL
 const sequelize = new Sequelize('teste', 'root', 'root', {
     host: "localhost",
@@ -21,7 +26,7 @@ app.get('/cadastro', (req, res) => {
 })
 
 app.post('/add', (req, res) => {
-    res.send("FORMULÁRIO RECEBIDO!");
+    res.send("Título: " + req.body.titulo + "<br>Conteúdo: " + req.body.conteudo);
 })
 
 app.listen(8081, () => {
