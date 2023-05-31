@@ -5,7 +5,7 @@ const handlebars = require("express-handlebars");
 
 const bodyParser = require("body-parser");
 
-const Sequelize = require('sequelize');
+
 
 
 
@@ -16,10 +16,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 //Conexão com o bando de dados MySQL
-const sequelize = new Sequelize('teste', 'root', 'root', {
-    host: "localhost",
-    dialect: "mysql",
-});
+
 
 app.get('/cadastro', (req, res) => {
     res.render('formulario');
