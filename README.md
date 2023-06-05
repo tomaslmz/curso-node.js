@@ -37,7 +37,7 @@ Aulas assistidas:
 -   [X] 29 - Iniciando com Mongoose
 -   [X] 30 - Trabalhando com o Mongoose
 -   [X] 31 - Iniciando projeto Express.js
--   [ ] 32 - Grupo de rotas no Express.js
+-   [X] 32 - Grupo de rotas no Express.js
 -   [ ] 33 - Arquivos estáticos
 -   [ ] 34 - Formulário de categorias
 -   [ ] 35 - Definindo o model de categorias

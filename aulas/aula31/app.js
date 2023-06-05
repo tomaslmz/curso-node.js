@@ -15,7 +15,11 @@ app.set('view engine', 'handlebars');
 // Mongoose
 
 // Rotas
+const mainRoute = require('./routes/main');
+app.use('/', mainRoute);
 
+const admRoute = require('./routes/admin');
+app.use('/adm', admRoute)
 // Outros
 const port = 8081;
 app.listen(8081, () => {
