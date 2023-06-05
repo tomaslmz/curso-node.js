@@ -36,7 +36,7 @@ Aulas assistidas:
 -   [X] 28 - Como instalar o MongoDB?
 -   [X] 29 - Iniciando com Mongoose
 -   [X] 30 - Trabalhando com o Mongoose
--   [ ] 31 - Iniciando projeto Express.js
+-   [X] 31 - Iniciando projeto Express.js
 -   [ ] 32 - Grupo de rotas no Express.js
 -   [ ] 33 - Arquivos estáticos
 -   [ ] 34 - Formulário de categorias
