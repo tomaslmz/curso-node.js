@@ -41,7 +41,7 @@ Aulas assistidas:
 -   [X] 33 - Arquivos estáticos
 -   [X] 34 - Formulário de categorias
 -   [X] 35 - Definindo o model de categorias
--   [ ] 36 - Cadastrando categorias no banco de dados
+-   [X] 36 - Cadastrando categorias no banco de dados
 -   [ ] 37 - O que são sessões e cookies?
 -   [ ] 38 - Middlewares
 -   [ ] 39 - Como configurar sessões?
