@@ -24,6 +24,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/blog", {useNewUrlParser: true, useUn
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+    console.log("Olá, eu sou um middleware!");
+    next();
+});
+
 
 // Rotas
 const mainRoute = require('./routes/main');
