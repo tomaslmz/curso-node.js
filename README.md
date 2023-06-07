@@ -45,7 +45,7 @@ Aulas assistidas:
 -   [X] 37 - O que são sessões e cookies?
 -   [X] 38 - Middlewares
 -   [X] 39 - Como configurar sessões?
--   [ ] 40 - Como validar formulários no Express.js?
+-   [X] 40 - Como validar formulários no Express.js?
 -   [ ] 41 - Listando as categorias
 -   [ ] 42 - Editando uma categoria
 -   [ ] 43 - Deletando categorias
