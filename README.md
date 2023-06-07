@@ -43,8 +43,8 @@ Aulas assistidas:
 -   [X] 35 - Definindo o model de categorias
 -   [X] 36 - Cadastrando categorias no banco de dados
 -   [X] 37 - O que são sessões e cookies?
--   [ ] 38 - Middlewares
--   [ ] 39 - Como configurar sessões?
+-   [X] 38 - Middlewares
+-   [X] 39 - Como configurar sessões?
 -   [ ] 40 - Como validar formulários no Express.js?
 -   [ ] 41 - Listando as categorias
 -   [ ] 42 - Editando uma categoria
