@@ -13,7 +13,12 @@ router.get("/posts", (req, res) => {
 });
 
 router.get('/categorias', (req, res) => {
-    res.render("../pages/admin/categorias");
+    Categoria.find().lean().sort({date: 'desc'}).then((categorias) => {
+        res.render("../pages/admin/categorias", {categorias: categorias});
+    }).catch((err) => {
+        req.flash('error_msg', 'Houve um erro ao carregar as categorias!');
+        res.redirect('/admin')
+    })
 });
 
 router.get("/categorias/cadastrar", (req, res) => {
