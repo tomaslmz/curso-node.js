@@ -115,4 +115,17 @@ router.post("/categorias/edit", (req, res) => {
     }
 });
 
+router.get("/categorias/apagar/:id", (req, res) => {
+    Categoria.findOne({_id : req.params.id}).then((categoria) => {
+        let nome = categoria.nome;
+
+        Categoria.deleteOne({_id: req.params.id}).then(() => {
+            req.flash("success_msg", "A categoria " + nome + " foi deletada!");
+            res.redirect("/adm/categorias");
+        }).catch((err) => {
+            req.flash("error_msg", "A categoria não pode ser apagada!");
+        })
+    });
+});
+
 module.exports = router;

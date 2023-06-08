@@ -48,7 +48,7 @@ Aulas assistidas:
 -   [X] 40 - Como validar formulários no Express.js?
 -   [X] 41 - Listando as categorias
 -   [X] 42 - Editando uma categoria
--   [ ] 43 - Deletando categorias
+-   [X] 43 - Deletando categorias
 -   [ ] 44 - Definindo o model de postagens
 -   [ ] 45 - Formulário de postagens
 -   [ ] 46 - Salvando postagens no banco de dados
