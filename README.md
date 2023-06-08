@@ -49,7 +49,7 @@ Aulas assistidas:
 -   [X] 41 - Listando as categorias
 -   [X] 42 - Editando uma categoria
 -   [X] 43 - Deletando categorias
--   [ ] 44 - Definindo o model de postagens
+-   [X] 44 - Definindo o model de postagens
 -   [ ] 45 - Formulário de postagens
 -   [ ] 46 - Salvando postagens no banco de dados
 -   [ ] 47 - Listando postagens
