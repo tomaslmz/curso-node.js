@@ -47,7 +47,7 @@ Aulas assistidas:
 -   [X] 39 - Como configurar sessões?
 -   [X] 40 - Como validar formulários no Express.js?
 -   [X] 41 - Listando as categorias
--   [ ] 42 - Editando uma categoria
+-   [X] 42 - Editando uma categoria
 -   [ ] 43 - Deletando categorias
 -   [ ] 44 - Definindo o model de postagens
 -   [ ] 45 - Formulário de postagens
