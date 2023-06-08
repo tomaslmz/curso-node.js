@@ -5,7 +5,7 @@ require("../models/Categoria");
 const Categoria = mongoose.model("categorias");
 
 router.get('/', (req, res) => {
-    res.render('../pages/admin/home');
+    res.render('../views/admin/home');
 })
 
 router.get("/posts", (req, res) => {
@@ -14,7 +14,7 @@ router.get("/posts", (req, res) => {
 
 router.get('/categorias', (req, res) => {
     Categoria.find().lean().sort({date: 'desc'}).then((categorias) => {
-        res.render("../pages/admin/categorias", {categorias: categorias});
+        res.render("../views/admin/categorias", {categorias: categorias});
     }).catch((err) => {
         req.flash('error_msg', 'Houve um erro ao carregar as categorias!');
         res.redirect('/admin')
@@ -22,7 +22,7 @@ router.get('/categorias', (req, res) => {
 });
 
 router.get("/categorias/cadastrar", (req, res) => {
-    res.render('../pages/admin/add-categorias');
+    res.render('../views/admin/add-categorias');
 });
 
 router.post("/categorias/novo", (req, res) => {
@@ -47,7 +47,7 @@ router.post("/categorias/novo", (req, res) => {
     }
 
     if(erros.length > 0) {
-        res.render("../pages/admin/add-categorias", {erros: erros});
+        res.render("../views/admin/add-categorias", {erros: erros});
     } else {
         const novaCategoria = {
             nome: req.body.nome,
