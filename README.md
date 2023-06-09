@@ -53,7 +53,7 @@ Aulas assistidas:
 -   [X] 45 - Formulário de postagens
 -   [X] 46 - Salvando postagens no banco de dados
 -   [X] 47 - Listando postagens
--   [ ] 48 - Editando postagens
+-   [X] 48 - Editando postagens
 -   [ ] 49 - Deletando postagens
 -   [ ] 50 - Criando home page
 -   [ ] 51 - Página de postagens

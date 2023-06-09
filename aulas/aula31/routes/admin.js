@@ -190,6 +190,66 @@ router.post("/postagem/postar", (req, res) => {
             res.redirect("/adm/postagens");
         });
     }
-})
+});
+
+router.get("/postagem/editar/:id", (req, res) => {
+    Categoria.find().lean().then((categorias) => {
+        Postagem.findOne({_id: req.params.id}).lean().then((postagem) => {
+            res.render("../views/admin/editar-postagem", {postagem: postagem, categorias: categorias});
+        }).catch(() => {
+            req.flash("error_msg", "Essa postagem não existe!");
+            res.redirect("/adm/postagens");
+        });
+    }).catch((err) => {
+        req.flash("error_msg", "Erro ao listar as categorias na edição de postagem!");
+        res.redirect("adm/postagens");
+    });
+});
+
+router.post("/postagem/edit", (req, res) => {
+    var erros = [];
+
+    if(!req.body.titulo || req.body.titulo === undefined || req.body.titulo == null) {
+        erros.push({texto: "Título não pode ser vazio!"});
+    }
+
+    if(!req.body.slug || req.body.slug === undefined || req.body.slug == null) {
+        erros.push({texto: "Slug não pode ser vazio!"});
+    } 
+
+    if(!req.body.descricao || req.body.descricao === undefined || req.body.descricao == null) {
+        erros.push({texto: "Descrição não pode ser vazio!"});
+    }
+
+    if(!req.body.conteudo || req.body.conteudo === undefined || req.body.conteudo == null) {
+        erros.push({texto: "Conteúdo não pode ser vazio!"});
+    }
+
+    if(req.body.categoria == "0") {
+        erros.push({texto: "É necessário inserir alguma categoria!"});
+    }
+
+    if(erros.length > 0) {
+        res.render('../views/admin/postagens', {erros: erros});
+    } else {
+        Postagem.findOne({_id: req.body.id}).then((postagem) => {
+            postagem.titulo = req.body.titulo;
+            postagem.slug = req.body.slug;
+            postagem.descricao = req.body.descricao;
+            postagem.conteudo = req.body.conteudo;
+            postagem.categoria = req.body.categoria;
+
+            postagem.save().then(() => {
+                req.flash("success_msg", "Postagem editada com sucesso!");
+                res.redirect("/adm/postagens");
+            }).catch((err) => {
+                req.flash("error_msg", "Houve um erro ao editar a postagem! " + err);
+                res.redirect("/adm/postagens");
+            })
+        }).catch((err) => {
+            req.flash("error_msg", "Essa postagem não existe!");
+        })
+    }
+});
 
 module.exports = router;
