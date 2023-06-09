@@ -10,7 +10,7 @@
             <label for="descricao">Descrição: </label>
             <input type="text" name="descricao" id="descricao" class="form-control" value="{{postagem.descricao}}">
             <label for="conteudo">Conteúdo: </label>
-            <input type="text" name="conteudo" id="conteudo" class="form-control" value="{{postagem.conteudo}}">
+            <textarea name="conteudo" id="conteudo" cols="30" rows="10" class="form-control">{{postagem.conteudo}}</textarea>
             <label for="categorias">Categoria: </label>
             <select name="categoria" id="categoria" class="form-select">
                 {{#each categorias}}

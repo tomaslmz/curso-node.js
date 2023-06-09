@@ -126,6 +126,7 @@ router.get("/categorias/apagar/:id", (req, res) => {
             res.redirect("/adm/categorias");
         }).catch((err) => {
             req.flash("error_msg", "A categoria não pode ser apagada!");
+            res.redirect("/adm/categorias");
         })
     });
 });
@@ -251,5 +252,19 @@ router.post("/postagem/edit", (req, res) => {
         })
     }
 });
+
+router.get("/postagem/apagar/:id", (req, res) => {
+    Postagem.findOne({_id: req.params.id}).then((postagem) => {
+        let nome = postagem.titulo;
+
+        Postagem.deleteOne({_id: req.params.id}).then(() => {
+            req.flash("success_msg", "A postagem " + nome + " foi deletada!");
+            res.redirect("/adm/postagens");
+        }).catch((err) => {
+            req.flash("error_msg", "A postagem não pode ser apagada!");
+            res.redirect("/adm/postagens");
+        })
+    })
+})
 
 module.exports = router;
