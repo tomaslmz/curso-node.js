@@ -26,7 +26,14 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // Handlebars
-app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars.engine({
+    defaultLayout: 'main',
+    helpers: {
+        formatDate: (date) => {
+            return moment(date).format("DD/MM/YYYY");
+        }
+    }
+}));
 app.set('view engine', 'handlebars');
 // Mongoose
 mongoose.Promise = global.Promise;

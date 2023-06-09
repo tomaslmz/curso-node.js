@@ -131,7 +131,12 @@ router.get("/categorias/apagar/:id", (req, res) => {
 });
 
 router.get("/postagens", (req, res) => {
-    res.render("../views/admin/postagens");
+    Postagem.find().lean().populate("categoria").sort({data: 'desc'}).then((postagens) => {
+        res.render("../views/admin/postagens", {postagens: postagens});
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao listar as postagens: " + err);
+        res.redirect("/adm");
+    })
 })
 
 router.get("/postagem/criar", (req, res) => {

@@ -1,3 +1,17 @@
 <h2>Postagens</h2>
 <hr>
 <a href="/adm/postagem/criar"><button class="btn btn-success">Nova postagem</button></a>
+
+{{#each postagens}}
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>{{titulo}}</h4>
+        <p>{{descricao}}</p>
+        <small><strong>{{categoria.nome}}</strong></small><br>
+        <small>{{data}}</small>
+    </div>
+</div>
+
+{{/each}}
