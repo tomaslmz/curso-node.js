@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1 class="display-4">Bem-vindo ao blog</h1>
+  <p class="lead">Isto é um site simples para aprender Node.js e MongoDB</p>
+  <hr class="my-4">
+  <p>É possível criar categorias e postagens</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Criar conta</a>
+</div>
+
+{{#each postagens}}
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>{{titulo}}</h4>
+        <p>{{descricao}}</p>
+        <small><strong>{{categoria.nome}}</strong></small><br>
+        <small>{{data}}</small><br>
+    </div>
+</div>
+{{else}}
+    <h5>Nenhuma postagem registrada!</h5>
+{{/each}}
