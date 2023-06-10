@@ -12,4 +12,18 @@ Router.get('/', (req, res) => {
     });
 });
 
+Router.get('/postagem/:slug', (req, res) => {
+    Postagem.findOne({slug: req.params.slug}).lean().populate("categoria").then((postagem) => {
+        if(postagem) {
+            res.render("../views/postagem", {postagem: postagem});
+        } else {
+            req.flash("error_msg", "Essa postagem não existe!");
+            res.redirect("/");
+        }
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro interno!");
+        res.redirect("/");
+    })
+})
+
 module.exports = Router;

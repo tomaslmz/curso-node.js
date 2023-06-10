@@ -13,8 +13,10 @@
     <div class="card-body">
         <h4>{{titulo}}</h4>
         <p>{{descricao}}</p>
+        <hr>
         <small><strong>{{categoria.nome}}</strong></small><br>
         <small>{{data}}</small><br>
+        <a href="/postagem/{{slug}}"><button class="btn btn-secondary mt-2" color="#fff">Leia mais...</button></a>
     </div>
 </div>
 {{else}}

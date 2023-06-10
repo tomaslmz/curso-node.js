@@ -135,7 +135,7 @@ router.get("/postagens", (req, res) => {
     Postagem.find().lean().populate("categoria").sort({data: 'desc'}).then((postagens) => {
         res.render("../views/admin/postagens", {postagens: postagens});
     }).catch((err) => {
-        req.flash("error_msg", "Houve um erro ao listar as postagens: " + err);
+        req.flash("error_msg", "Houve um erro ao listar as postagens!" );
         res.redirect("/adm");
     })
 })
