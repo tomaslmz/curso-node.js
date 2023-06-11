@@ -3,6 +3,8 @@ const Router = express.Router();
 const mongoose = require("mongoose");
 require('../models/Postagem');
 const Postagem = mongoose.model("postagens");
+require('../models/Categoria');
+const Categoria = mongoose.model("categorias");
 
 Router.get('/', (req, res) => {
     Postagem.find().lean().populate("categoria").sort({data: "desc"}).then((postagens) => {
@@ -25,5 +27,27 @@ Router.get('/postagem/:slug', (req, res) => {
         res.redirect("/");
     })
 })
+
+Router.get("/categorias", (req, res) => {
+    Categoria.find().lean().then((categorias) => {
+        res.render('../views/categorias', {categorias: categorias});
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro interno ao mostrar as categorias!");
+        res.redirect("/");
+    });
+});
+
+Router.get("/categorias/:slug", (req, res) => {
+    Categoria.findOne({slug: req.params.slug}).lean().then((categoria) => {
+        if(categoria) {
+            Postagem.find({categoria: categoria._id}).populate("categoria").lean().then((postagens) => {
+                res.render("../views/filtro", {postagens: postagens});
+            });
+        } else {
+            req.flash("error_msg", "Essa categoria não existe!");
+            res.redirect("/categorias");
+        }
+    })
+});
 
 module.exports = Router;
