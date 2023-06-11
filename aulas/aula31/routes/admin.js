@@ -48,6 +48,8 @@ router.post("/categorias/novo", (req, res) => {
         erros.push({texto: "O Slug não pode conter letras maiúsculas"});
     }
 
+    req.body.slug = req.body.slug.replace(" ", "-");
+
     if(erros.length > 0) {
         res.render("../views/admin/add-categorias", {erros: erros});
     } else {
