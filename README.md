@@ -57,8 +57,8 @@ Aulas assistidas:
 -   [X] 49 - Deletando postagens
 -   [X] 50 - Criando home page
 -   [X] 51 - Página de postagens
--   [ ] 52 - Listagem de categorias
--   [ ] 53 - Definindo o model de usuários
+-   [X] 52 - Listagem de categorias
+-   [X] 53 - Definindo o model de usuários
 -   [ ] 54 - Registro de usuários
 -   [ ] 55 - Fazendo correção
 -   [ ] 56 - Cadastrando usuários no banco de dados
