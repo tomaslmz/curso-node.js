@@ -59,7 +59,7 @@ Aulas assistidas:
 -   [X] 51 - Página de postagens
 -   [X] 52 - Listagem de categorias
 -   [X] 53 - Definindo o model de usuários
--   [ ] 54 - Registro de usuários
+-   [X] 54 - Registro de usuários
 -   [ ] 55 - Fazendo correção
 -   [ ] 56 - Cadastrando usuários no banco de dados
 -   [ ] 57 - Formulário de login
