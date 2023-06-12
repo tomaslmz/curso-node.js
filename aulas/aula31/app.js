@@ -53,7 +53,7 @@ const admRoute = require('./routes/admin');
 app.use('/adm', admRoute)
 
 const userRoute = require('./routes/usuario');
-app.use('/user', userRoute);
+app.use('/usuario', userRoute);
 // Outros
 const port = 8081;
 app.listen(port, () => {

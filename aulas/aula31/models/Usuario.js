@@ -12,6 +12,11 @@ const Usuario = new Schema({
         required: true
     },
 
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+
     senha: {
         type: String,
         required: true

@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 require("../models/Usuario");
 const Usuario = mongoose.model("usuarios");
+const bcrypt = require('bcryptjs');
 
 router.get("/registro", (req, res) => {
     res.render('../views/usuario/registro');
@@ -29,12 +30,49 @@ router.post('/registro', (req, res) => {
         erros.push({texto: 'Você precisa inserir a sua senha de novo!'});
     }
 
-    if(req.body.senha1 != req.body.senha) {
+    if(req.body.senha2 != req.body.senha) {
         erros.push({texto: 'As senhas não coincidem!'});
     }
 
     if(erros.length > 0) {
         res.render('../views/usuario/registro', {erros: erros});
+    } else {
+        Usuario.findOne({email: req.body.email}).lean().then((usuario) => {
+            if(usuario) {
+                req.flash('error_msg', 'Este e-mail já está cadastrado!');
+                res.redirect('/usuario/registro');
+            } else {
+
+                const novoUsuario = new Usuario({
+                    nome: req.body.nome,
+                    email: req.body.email,
+                    senha: req.body.senha
+                });
+
+                bcrypt.genSalt(10, (erro, salt) => {
+                    bcrypt.hash(novoUsuario.senha, salt, (erro, hash) => {
+                        if(erro) {
+                            req.flash("error_msg", 'Houve um erro ao armazenar o dado do usuário!');
+                            res.redirect('/');
+                        } 
+
+                        novoUsuario.senha = hash;
+
+                        novoUsuario.save().then(() => {
+                            req.flash("success_msg", "Registro realizado com sucesso!");
+                            res.redirect('/');
+                        }).catch((err) => {
+                            req.flash("error_msg", 'Houve um erro ao criar o usuário!');
+                            res.redirect('/');
+                        })
+                    });
+                });
+
+                
+            }
+        }).catch((err) => {
+            req.flash('error_msg', 'Houve um erro interno!');
+        })
     }
 })
 
