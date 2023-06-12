@@ -61,7 +61,7 @@ Aulas assistidas:
 -   [X] 53 - Definindo o model de usuários
 -   [X] 54 - Registro de usuários
 -   [X] 55 - Fazendo correção
--   [ ] 56 - Cadastrando usuários no banco de dados
+-   [X] 56 - Cadastrando usuários no banco de dados
 -   [ ] 57 - Formulário de login
 -   [ ] 58 - Configurando o passport
 -   [ ] 59 - Finalizando a autenticação
