@@ -7,6 +7,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 const session = require("express-session");
 const flash = require('connect-flash');
+const passport = require('passport');
+const bcrypt = require('bcryptjs');
+require('./config/auth')(passport);
 
 // Configurações
 // Configurar a nossa sessão
@@ -14,12 +17,16 @@ app.use(session({
     secret: "cursodenode",
     resave: true,
     saveUninitialized: true
-}))
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 //Configurar o middleware
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash("success_msg");
     res.locals.error_msg = req.flash("error_msg");
+    res.locals.error = req.flash("error");
     next(); 
 })
 // Body parser
