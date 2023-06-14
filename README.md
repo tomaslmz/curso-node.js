@@ -62,7 +62,7 @@ Aulas assistidas:
 -   [X] 54 - Registro de usuários
 -   [X] 55 - Fazendo correção
 -   [X] 56 - Cadastrando usuários no banco de dados
--   [ ] 57 - Formulário de login
+-   [X] 57 - Formulário de login
 -   [ ] 58 - Configurando o passport
 -   [ ] 59 - Finalizando a autenticação
 -   [ ] 60 - Controlando o acesso

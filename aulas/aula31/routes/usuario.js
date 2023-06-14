@@ -76,4 +76,8 @@ router.post('/registro', (req, res) => {
     }
 })
 
+router.get('/login', (req, res) => {
+    res.render('../views/usuario/login')
+})
+
 module.exports = router
