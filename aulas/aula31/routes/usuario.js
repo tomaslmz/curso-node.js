@@ -87,6 +87,13 @@ router.post('/login', (req, res, next) => {
         failureRedirect: '/usuario/login',
         failureFlash: true
     })(req, res, next);
-})
+});
+
+router.get('/logout', (req, res) => {
+    req.logout(() => {
+        req.flash("success_msg", "Você saiu da sua conta!");
+        res.redirect("/")
+    });
+});
 
 module.exports = router

@@ -65,7 +65,7 @@ Aulas assistidas:
 -   [X] 57 - Formulário de login
 -   [X] 58 - Configurando o passport
 -   [X] 59 - Finalizando a autenticação
--   [ ] 60 - Controlando o acesso
--   [ ] 61 - Logout
--   [ ] 62 - Como fazer deploy no Heroku - Parte 1
--   [ ] 63 - Como fazer deploy no Heroku - Parte 2
+-   [X] 60 - Controlando o acesso
+-   [X] 61 - Logout
+-   [X] 62 - Como fazer deploy no Heroku - Parte 1
+-   [X] 63 - Como fazer deploy no Heroku - Parte 2

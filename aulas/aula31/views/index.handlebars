@@ -1,10 +1,14 @@
-<div class="jumbotron">
-  <h1 class="display-4">Bem-vindo ao blog</h1>
-  <p class="lead">Isto é um site simples para aprender Node.js e MongoDB</p>
-  <hr class="my-4">
-  <p>É possível criar categorias e postagens</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Criar conta</a>
-</div>
+{{#if user}}
+    <h1>Seja bem vindo!</h1>
+{{else}}
+    <div class="jumbotron">
+        <h1 class="display-4">Bem-vindo ao blog</h1>
+        <p class="lead">Isto é um site simples para aprender Node.js e MongoDB</p>
+        <hr class="my-4">
+        <p>É possível criar categorias e postagens</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Criar conta</a>
+    </div>
+{{/if}}
 
 {{#each postagens}}
 

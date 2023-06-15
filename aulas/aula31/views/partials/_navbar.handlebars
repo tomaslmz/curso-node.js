@@ -13,7 +13,9 @@
           <a class="nav-link text-white" href="/categorias">Categorias</a>
         </li>
         {{#if user}}
-
+          <li>
+            <a href="/usuario/logout" class="nav-link text-white">Sair</a>
+          </li>
         {{else}}
         <li class="nav-item">
           <a class="nav-link text-white" href="/usuario/login">Login</a>
