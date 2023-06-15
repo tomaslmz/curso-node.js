@@ -5,16 +5,17 @@ require("../models/Categoria");
 const Categoria = mongoose.model("categorias");
 require("../models/Postagem");
 const Postagem = mongoose.model("postagens");
+const {isAdmin} = require("../helpers/isAdmin");
 
-router.get('/', (req, res) => {
+router.get('/', isAdmin ,(req, res) => {
     res.render('../views/admin/home');
 })
 
-router.get("/posts", (req, res) => {
+router.get("/posts", isAdmin ,(req, res) => {
     res.send("Página de posts");
 });
 
-router.get('/categorias', (req, res) => {
+router.get('/categorias', isAdmin ,(req, res) => {
     Categoria.find().lean().sort({date: 'desc'}).then((categorias) => {
         res.render("../views/admin/categorias", {categorias: categorias});
     }).catch((err) => {
@@ -23,11 +24,11 @@ router.get('/categorias', (req, res) => {
     })
 });
 
-router.get("/categorias/cadastrar", (req, res) => {
+router.get("/categorias/cadastrar", isAdmin ,(req, res) => {
     res.render('../views/admin/add-categorias');
 });
 
-router.post("/categorias/novo", (req, res) => {
+router.post("/categorias/novo", isAdmin ,(req, res) => {
 
     var erros = [];
 
@@ -68,7 +69,7 @@ router.post("/categorias/novo", (req, res) => {
     }
 });
 
-router.get("/categorias/editar/:id", (req, res) => {
+router.get("/categorias/editar/:id", isAdmin ,(req, res) => {
     Categoria.findOne({_id: req.params.id}).lean().then((categoria) => {
         res.render("../views/admin/editar-categoria", {categoria: categoria});
     }).catch((err) => {
@@ -78,7 +79,7 @@ router.get("/categorias/editar/:id", (req, res) => {
     
 });
 
-router.post("/categorias/edit", (req, res) => {
+router.post("/categorias/edit", isAdmin ,(req, res) => {
     var erros = [];
 
 
@@ -119,7 +120,7 @@ router.post("/categorias/edit", (req, res) => {
     }
 });
 
-router.get("/categorias/apagar/:id", (req, res) => {
+router.get("/categorias/apagar/:id", isAdmin ,(req, res) => {
     Categoria.findOne({_id : req.params.id}).then((categoria) => {
         let nome = categoria.nome;
 
@@ -133,7 +134,7 @@ router.get("/categorias/apagar/:id", (req, res) => {
     });
 });
 
-router.get("/postagens", (req, res) => {
+router.get("/postagens", isAdmin ,(req, res) => {
     Postagem.find().lean().populate("categoria").sort({data: 'desc'}).then((postagens) => {
         res.render("../views/admin/postagens", {postagens: postagens});
     }).catch((err) => {
@@ -142,7 +143,7 @@ router.get("/postagens", (req, res) => {
     })
 })
 
-router.get("/postagem/criar", (req, res) => {
+router.get("/postagem/criar", isAdmin ,(req, res) => {
     Categoria.find().lean().then((categorias) => {
         res.render("../views/admin/add-postagem", {categorias: categorias});
     }).catch((err) => {
@@ -151,7 +152,7 @@ router.get("/postagem/criar", (req, res) => {
     });
 })
 
-router.post("/postagem/postar", (req, res) => {
+router.post("/postagem/postar", isAdmin ,(req, res) => {
     var erros = [];
 
     if(!req.body.titulo || req.body.titulo === undefined || req.body.titulo == null) {
@@ -195,7 +196,7 @@ router.post("/postagem/postar", (req, res) => {
     }
 });
 
-router.get("/postagem/editar/:id", (req, res) => {
+router.get("/postagem/editar/:id", isAdmin ,(req, res) => {
     Categoria.find().lean().then((categorias) => {
         Postagem.findOne({_id: req.params.id}).lean().then((postagem) => {
             res.render("../views/admin/editar-postagem", {postagem: postagem, categorias: categorias});
@@ -209,7 +210,7 @@ router.get("/postagem/editar/:id", (req, res) => {
     });
 });
 
-router.post("/postagem/edit", (req, res) => {
+router.post("/postagem/edit", isAdmin ,(req, res) => {
     var erros = [];
 
     if(!req.body.titulo || req.body.titulo === undefined || req.body.titulo == null) {
@@ -255,7 +256,7 @@ router.post("/postagem/edit", (req, res) => {
     }
 });
 
-router.get("/postagem/apagar/:id", (req, res) => {
+router.get("/postagem/apagar/:id", isAdmin ,(req, res) => {
     Postagem.findOne({_id: req.params.id}).then((postagem) => {
         let nome = postagem.titulo;
 
